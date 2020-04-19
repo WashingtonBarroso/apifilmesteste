@@ -1,15 +1,12 @@
-using System;
-using System.Net.Http;
-using wiz.filmes.api.ViewModels;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using wiz.filmes.api.Model;
-using System.Text.Json;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
 using Microsoft.Extensions.Options;
+using System;
+using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using wiz.filmes.api.Model;
 using wiz.filmes.api.Settings;
+using wiz.filmes.api.ViewModels;
 
 namespace wiz.filmes.api.Services
 {
@@ -24,6 +21,13 @@ namespace wiz.filmes.api.Services
             _settings = settings;
         }
 
+
+        /// <summary>
+        /// Recupera os filmes a serem lançados.
+        /// Retorna o nome, data lancamento e genero dos filmes a serem lançados. 
+        /// </summary>
+        /// <param name="nPage"></param>
+        /// <returns>PaginatedViewModel</returns>
         public async Task<PaginatedViewModel> ObterFilmes(int nPage)
         {
 
@@ -55,17 +59,19 @@ namespace wiz.filmes.api.Services
                     Dtlancamento = o.release_date
                 });
             }
-            else
-            {
-                return paginaViewModel;
-            }
 
             return paginaViewModel;
 
         }
 
-        private async Task<string> ObterGeneros(HttpClient client)
+        /// <summary>
+        /// Recupera os generos dos filmes.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public async Task<string> ObterGeneros(HttpClient client)
         {
+
             var reqGenero = new HttpRequestMessage(HttpMethod.Get, $"https://api.themoviedb.org/3/genre/movie/list?api_key={_settings.Value.KeyAPI}");
 
             var responseAPIGen = "";
@@ -80,6 +86,7 @@ namespace wiz.filmes.api.Services
             }
 
             return responseAPIGen;
+
         }
     }
 

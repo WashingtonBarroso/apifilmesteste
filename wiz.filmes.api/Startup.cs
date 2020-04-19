@@ -33,7 +33,7 @@ namespace wiz.filmes.api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Filmes API", Version = "v1", Description = "Uma API para consultar de filmes a serem lançados" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Filmes API", Version = "v1", Description = "API para consulta de filmes a serem lançados" });
             });
 
             services.Configure<SettingsAPI>(Configuration.GetSection("SettingsAPI"));
@@ -55,8 +55,9 @@ namespace wiz.filmes.api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Filmes API V1");
-                //c.RoutePrefix = string.Empty;
             });
+
+            app.UseExceptionHandler("/error-api");
 
             app.UseHttpsRedirection();
 

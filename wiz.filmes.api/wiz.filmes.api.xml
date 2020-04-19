@@ -4,5 +4,35 @@
         <name>wiz.filmes.api</name>
     </assembly>
     <members>
+        <!-- Badly formed XML comment ignored for member "M:wiz.filmes.api.Controllers.FilmesController.Get(System.Int32)" -->
+        <member name="M:wiz.filmes.api.Services.FilmeService.ObterFilmes(System.Int32)">
+            <summary>
+            Recupera os filmes a serem lançados.
+            Retorna o nome, data lancamento e genero dos filmes a serem lançados. 
+            </summary>
+            <param name="nPage"></param>
+            <returns>PaginatedViewModel</returns>
+        </member>
+        <member name="M:wiz.filmes.api.Services.FilmeService.ObterGeneros(System.Net.Http.HttpClient)">
+            <summary>
+            Recupera os generos dos filmes.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wiz.filmes.api.Services.IFilmeService.ObterFilmes(System.Int32)">
+            <summary>
+             Recupera os filmes a serem lançados.
+            </summary>
+            <param name="nPage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wiz.filmes.api.Services.IFilmeService.ObterGeneros(System.Net.Http.HttpClient)">
+            <summary>
+            Recupera os generos dos filmes.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

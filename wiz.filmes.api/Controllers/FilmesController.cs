@@ -25,7 +25,7 @@ namespace wiz.filmes.api.Controllers
         ///  API para recuperar os filmes a serem lançados 
         /// </summary>
         /// <param name="nPage"></param>
-        /// <returns></returns>
+        /// <returns>PaginatedViewModel</returns
         [HttpGet]
         public IActionResult Get(int nPage)
         {
@@ -40,5 +40,7 @@ namespace wiz.filmes.api.Controllers
             return Ok(result);
 
         }
+  
+
     }
 }
